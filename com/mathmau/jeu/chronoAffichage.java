@@ -16,8 +16,6 @@ public class chronoAffichage implements Runnable {
                 //Faire augtre chose au cas ou la commande sleep ne fonctionne pas
             } catch (InterruptedException e) {
             }
-
-
         }
 
     }
