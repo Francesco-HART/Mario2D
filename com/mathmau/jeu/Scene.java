@@ -1,4 +1,6 @@
 package com.mathmau.jeu;
+import com.francesco.personnages.Mario;
+
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import java.awt.Image;
@@ -18,14 +20,14 @@ public class Scene extends JPanel {
     private ImageIcon icoDepart;
     private Image imgDepart;
 
-    private ImageIcon icoMario;
-    private  Image imgMario;
+
     //Abscice du coin superieur gauche de l'image fond
     private int xFond1;
     private int xFond2;
     //Deplacer l'ecran horizontalement
     private int dx;
     private int xPos;
+    public Mario mario;
 
 
 
@@ -45,17 +47,13 @@ public class Scene extends JPanel {
         this.imgFond2 = this.icoFond.getImage();
         //Depart
 
-
-        icoMario = new ImageIcon(getClass().getResource("/image/marioMarcheDroite.png"));
-        this.imgMario = this.icoMario.getImage();
-
         this.icoChateau1 = new ImageIcon(getClass().getResource("/image/chateau1.png"));
         this.imgChateau1 = this.icoChateau1.getImage();
 
         this.icoDepart = new ImageIcon(getClass().getResource("/image/depart.png"));
         this.imgDepart = this.icoDepart.getImage();
 
-
+        mario = new Mario (300, 245);
     //ecouter evenement clavier avec la scene les 2 1er le 3eme relis classe clavier a scene
         this.setFocusable(true);
         //Recup le focus
@@ -115,7 +113,7 @@ public class Scene extends JPanel {
         g2.drawImage(this.imgFond1,this.xFond1,0,null);//Dessin img de fond
         g2.drawImage(this.imgFond2,this.xFond2,0,null);
 
-        g2.drawImage(this.imgMario,300,245, null);
+        g2.drawImage(this.mario.marche("mario", 25),300,245, null);
         //Dessin du depart avec mise a jour -this.xPos
         g2.drawImage(this.imgChateau1, 10 - this.xPos, 95, null);
         g2.drawImage(this.imgDepart, 220 - this.xPos, 234, null);
