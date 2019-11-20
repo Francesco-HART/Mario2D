@@ -1,5 +1,7 @@
 package com.mathmau.jeu;
+import com.francesco.personnages.BadBlock;
 import com.francesco.personnages.Mario;
+import com.francesco.personnages.tuyauRouge;
 
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
@@ -27,7 +29,12 @@ public class Scene extends JPanel {
     //Deplacer l'ecran horizontalement
     private int dx;
     private int xPos;
+    //Perso
     public Mario mario;
+
+    //Object
+    public tuyauRouge tuyauRouge1;
+    public BadBlock BadBlock1;
 
 
 
@@ -52,8 +59,13 @@ public class Scene extends JPanel {
 
         this.icoDepart = new ImageIcon(getClass().getResource("/image/depart.png"));
         this.imgDepart = this.icoDepart.getImage();
-
+        //Instances Personnages
         mario = new Mario (300, 245);
+        //Instance Obnject
+        tuyauRouge1 = new tuyauRouge(600, 230);
+        BadBlock1 = new BadBlock(400, 180);
+
+
     //ecouter evenement clavier avec la scene les 2 1er le 3eme relis classe clavier a scene
         this.setFocusable(true);
         //Recup le focus
@@ -117,6 +129,8 @@ public class Scene extends JPanel {
         //Dessin du depart avec mise a jour -this.xPos
         g2.drawImage(this.imgChateau1, 10 - this.xPos, 95, null);
         g2.drawImage(this.imgDepart, 220 - this.xPos, 234, null);
+        g2.drawImage(this.tuyauRouge1.getImgtuyauRouge(), this.tuyauRouge1.getX() - this.xPos, this.tuyauRouge1.getY(), null);
+        g2.drawImage(this.BadBlock1.getImgBadBlock(), this.BadBlock1.getX()-this.xPos, this.BadBlock1.getY(), null);
         //Faire fonctionner la méthode déplacement fond
 
     }
